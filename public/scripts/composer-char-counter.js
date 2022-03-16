@@ -5,10 +5,10 @@ $(document).ready(function () {
     const elem2 = $(elem1).children()[2];
     const elem3 = $(elem2).children()[1];
     if (leftover >= 0) {
-    $(elem3).html(leftover).css({"color":"black"});
+    $(elem3).html(leftover).removeClass("countRed")
     }
     if (leftover <= 0) {
-      $(elem3).html(leftover).css({"color":"red"});
+      $(elem3).html(leftover).addClass("countRed")
     }
   });
 });

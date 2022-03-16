@@ -32,3 +32,6 @@ body {
   align-content: center;
   margin: 0px 45px;
 } 
+.countRed {
+  color: red;
+}
