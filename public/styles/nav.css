@@ -8,14 +8,15 @@ nav {
   color: #FFFFFF;
   display: flex;
   justify-content: space-between;
+  background-image: url("https://www.transparenttextures.com/patterns/arches.png"); 
 }
 .newTweet {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-family: 'Source Sans Pro', sans-serif;
+  padding: 1.5em;
 }
+
 .title {
   display: flex;
   font-family: 'Bungee', cursive;
