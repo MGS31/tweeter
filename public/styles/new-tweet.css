@@ -19,6 +19,7 @@ textarea {
   border: none;
   border-bottom: 3.5px solid;
   margin-bottom: 10px;
+  resize: none;
 }
 
 button {
