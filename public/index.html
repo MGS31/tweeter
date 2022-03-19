@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/posted-tweets.css" type="text/css" />
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -37,10 +38,10 @@
       <span class = "title">tweeter</span>
       <div class = "newTweet">
         <a><b>Write</b> a new tweet</a>
-        <i class="fa-solid fa-angles-down"></i>
+        <i class="fa-solid fa-angles-down" name = "down-angles"></i>
       </div>
     </nav>
-    <header>
+    <header class = "top-bar">
       <div class = "avatar">
           <img src="/images/profile-hex.png"> 
       </div>
@@ -61,6 +62,23 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      <section class="tweet-container">
+        <article class = "tweet">
+          <header>
+            <p class = "name">Your Name</p>
+            <p class = "username">@Your Username</p>
+          </header>
+          <p class = "tweet">Dummy Text</p>
+          <footer>
+            <p class = "days">10 days ago</p>
+          <div class = "icons">
+            <i class="fa-solid fa-flag" name = "flag"></i>
+            <i class="fa-solid fa-retweet" name = "arrows"></i>
+            <i class="fa-solid fa-heart" name = "heart"></i>
+          </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
