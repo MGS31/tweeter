@@ -25,6 +25,6 @@ nav {
   font-size: 40px;
 }
 
-i {
+i[name="down-angles"] {
   color: red;
 }
