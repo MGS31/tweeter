@@ -6,7 +6,7 @@
 * The background-color should be a different colour than the nav and the body
 * 
 */
-header {
+header.top-bar {
   height: 400px;
   width: 100%;
   background-color: #EBF5EE;
