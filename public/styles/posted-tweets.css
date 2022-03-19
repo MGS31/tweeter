@@ -1,0 +1,72 @@
+section.tweet-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+article.tweet {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 1.5em;
+  padding: 10px;
+  border: 4px solid black;
+}
+
+article:hover {
+  box-shadow: 5px 5px #4056A1;
+}
+
+article.tweet header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 10px 0px 10px;
+}
+
+p.tweet {
+  display: flex;
+  align-content: center;
+  width: 90%;
+  margin: 0px 10px;
+  padding-left: 25px;
+}
+
+article.tweet footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  border-top: 3.5px solid;
+  font-size: 12px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+p.username {
+  display: flex;
+  color: lightgray;
+  font-size: 18px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+p.name {
+  font-weight: bold;
+  padding-left: 10px;
+  color: grey;
+}
+
+.icons {
+  margin: 10px;
+  color: #4056A1;
+}
+i[name = "flag"]:hover {
+  color: gold;
+}
+
+i[name = "arrows"]:hover {
+  color: gold;
+}
+
+i[name = "heart"]:hover {
+  color: gold;
+}
