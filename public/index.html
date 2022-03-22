@@ -28,7 +28,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
@@ -54,32 +53,19 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <form method="post" action="/tweets">
+        <form id= "tweetpost" method="post" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
           <textarea class="textarea" name="text" id="tweet-text"></textarea>
           <div class= "button">
-            <button type="submit">Tweet</button>
+            <button id="button" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
-      <section class="tweet-container">
-        <article class = "tweet">
-          <header>
-            <p class = "name">Your Name</p>
-            <p class = "username">@Your Username</p>
-          </header>
-          <p class = "tweet">Dummy Text</p>
-          <footer>
-            <p class = "days">10 days ago</p>
-          <div class = "icons">
-            <i class="fa-solid fa-flag" name = "flag"></i>
-            <i class="fa-solid fa-retweet" name = "arrows"></i>
-            <i class="fa-solid fa-heart" name = "heart"></i>
-          </div>
-          </footer>
-        </article>
+      <section id="tweet-container">
       </section>
     </main>
+    <!-- Client JS APP Link-->
+    <script type="text/javascript" src="/scripts/client.js"></script>
   </body>
 </html>
