@@ -70,3 +70,13 @@ i[name = "arrows"]:hover {
 i[name = "heart"]:hover {
   color: gold;
 }
+
+.name-ava {
+  display: flex;
+  flex-direction: row;
+}
+
+div.name-ava img {
+  height: 50.5px;
+  width: 45px;
+}
