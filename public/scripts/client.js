@@ -29,7 +29,7 @@ const data = [
 ]
 
 /* 
- * assisted by @nosaoasis
+ * assisted by @nosaoasis and @rachelpr
  * take in the information to be rendered
  * loop through it all
  * run createTweetElement on each
@@ -44,7 +44,7 @@ const renderTweets = function(tweets) {
 };
 
 /*
- * assisted by @nosaoasis
+ * assisted by @nosaoasis and @rachelpr
  * take in an object
  * deconstruct object by it's keys
  * set up a variable containing the markup for the HTML element
