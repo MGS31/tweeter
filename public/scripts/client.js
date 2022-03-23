@@ -4,30 +4,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
 
 /* 
  * assisted by @nosaoasis and @rachelpr
@@ -44,22 +20,33 @@ const renderTweets = function(tweets) {
   });
 };
 
-const checkTextArea = function(text) {
-  if (text === '') {
-    return false;
-  }
-  if (text.length >= 141) {
-    return false
-  }
-  return true;
+/*
+ * function provided by @LHL
+ * using a create text node on the input string from the users and returning as innerHTML,
+ * it negates XSS usage in the text area.
+ */
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 };
 
+/*
+ * assisted by @nosaoasis and @rachelpr
+ * runs an ajax get request on the requested url
+ * specifies the data type to JSON
+ * using a .then is does two things
+ * slices the last (or most recent) element from the data array of tweets
+ * Pops it out and returns it as the variable newTweet.
+ * It then runs the render Tweets function on that single tweet element.
+ */
 const loadTweets = function () {
   $.ajax({
     url: "http://localhost:8080/tweets",
     dataType: "JSON"
   }).then(function(data) {
-    renderTweets(data);
+    const newTweet = [data.slice(-1).pop()];
+    renderTweets(newTweet);
   })
 };
 
@@ -84,7 +71,7 @@ const createTweetElement = function(tweetObj) {
             </div>
             <p class = "username">${user.handle}</p>
           </header>
-          <p class = "tweet">${content.text}</p>
+          <p class = "tweet">${escape(content.text)}</p>
           <footer>
             <p class = "days">${timeago.format(created_at)}</p>
           <div class = "icons">
@@ -99,7 +86,8 @@ const createTweetElement = function(tweetObj) {
 };
 
 /*
- * 
+ * Post method with validation for server side logic.
+ * returns an error if the post exceeds the character limit or is empty.
  */
 $(document).ready(function() {
 $("#tweetpost").on("submit", function(event) {
@@ -116,6 +104,7 @@ $("#tweetpost").on("submit", function(event) {
     url: "/tweets",
     data: $(this).serialize(),
     success: function() {
+      $("textarea").val("");
       loadTweets();
     }
   })
