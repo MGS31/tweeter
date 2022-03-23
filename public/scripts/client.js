@@ -106,12 +106,12 @@ $("#tweetpost").on("submit", function(event) {
   event.preventDefault();
   let textarea = $("textarea").val();
   if (textarea.length > 140) {
-    $(".val-error").text('Error: You exceeded the post limit!')
+    $(".val-error").text('⚠Error: You write a bit to much! Maybe tone it down a little?⚠')
     $(".val-error").slideDown(600);
     return
   } 
   if (textarea === "") {
-    $(".val-error").text('Error: You have not written anything!')
+    $(".val-error").text('⚠Error: It looks like you forgot to write something!⚠')
     $(".val-error").slideDown(600);
     return
   } 
