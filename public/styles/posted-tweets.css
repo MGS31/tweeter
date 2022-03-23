@@ -80,3 +80,7 @@ div.name-ava img {
   height: 50.5px;
   width: 45px;
 }
+
+.error {
+  color: red;
+}
