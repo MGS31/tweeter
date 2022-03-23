@@ -45,10 +45,20 @@ const loadTweets = function () {
     url: "http://localhost:8080/tweets",
     dataType: "JSON"
   }).then(function(data) {
+    renderTweets(data);
+  })
+};
+
+const loadNewTweets = function () {
+  $.ajax({
+    url: "http://localhost:8080/tweets",
+    dataType: "JSON"
+  }).then(function(data) {
     const newTweet = [data.slice(-1).pop()];
     renderTweets(newTweet);
   })
 };
+
 
 
 /*
@@ -90,22 +100,29 @@ const createTweetElement = function(tweetObj) {
  * returns an error if the post exceeds the character limit or is empty.
  */
 $(document).ready(function() {
+  loadTweets();
+  $(".val-error").hide();
 $("#tweetpost").on("submit", function(event) {
   event.preventDefault();
   let textarea = $("textarea").val();
   if (textarea.length > 140) {
-    $("textarea").after('<span class=error>Error: You exceeded the post limit!</span>')
+    $(".val-error").text('Error: You exceeded the post limit!')
+    $(".val-error").slideDown(600);
+    return
   } 
   if (textarea === "") {
-    $("textarea").after('<span class=error>Error: You have not written anything!</span>')
+    $(".val-error").text('Error: You have not written anything!')
+    $(".val-error").slideDown(600);
+    return
   } 
   $.ajax({
     method: "POST",
     url: "/tweets",
     data: $(this).serialize(),
     success: function() {
+      loadNewTweets();
       $("textarea").val("");
-      loadTweets();
+      $(".val-error").slideUp(200);
     }
   })
   console.log($(this).serialize());
