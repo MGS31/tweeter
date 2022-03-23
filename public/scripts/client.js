@@ -79,7 +79,7 @@ const createTweetElement = function(tweetObj) {
 };
 
 // renderTweets(data);
-
+$(document).ready(function() {
 $("#tweetpost").on("submit", function(event) {
   event.preventDefault();
   $.ajax({
@@ -90,13 +90,15 @@ $("#tweetpost").on("submit", function(event) {
   console.log($(this).serialize());
 });
 
-$(document).ready(function() {
   const loadTweets = function () {
     $.ajax({
-      type: "GET",
-      data: "JSON",
+      url: "http://localhost:8080/tweets",
+      dataType: "JSON"
     }).then(function(data) {
       renderTweets(data);
-    });
-  }
+    })
+  };
+
+loadTweets();
+
 });
