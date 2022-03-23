@@ -44,6 +44,26 @@ const renderTweets = function(tweets) {
   });
 };
 
+const checkTextArea = function(text) {
+  if (text === '') {
+    return false;
+  }
+  if (text.length >= 141) {
+    return false
+  }
+  return true;
+};
+
+const loadTweets = function () {
+  $.ajax({
+    url: "http://localhost:8080/tweets",
+    dataType: "JSON"
+  }).then(function(data) {
+    renderTweets(data);
+  })
+};
+
+
 /*
  * assisted by @nosaoasis and @rachelpr
  * take in an object
@@ -78,27 +98,27 @@ const createTweetElement = function(tweetObj) {
   return markup;
 };
 
-// renderTweets(data);
+/*
+ * 
+ */
 $(document).ready(function() {
 $("#tweetpost").on("submit", function(event) {
   event.preventDefault();
+  let textarea = $("textarea").val();
+  if (textarea.length > 140) {
+    $("textarea").after('<span class=error>Error: You exceeded the post limit!</span>')
+  } 
+  if (textarea === "") {
+    $("textarea").after('<span class=error>Error: You have not written anything!</span>')
+  } 
   $.ajax({
     method: "POST",
     url: "/tweets",
-    data: $(this).serialize()
+    data: $(this).serialize(),
+    success: function() {
+      loadTweets();
+    }
   })
   console.log($(this).serialize());
 });
-
-  const loadTweets = function () {
-    $.ajax({
-      url: "http://localhost:8080/tweets",
-      dataType: "JSON"
-    }).then(function(data) {
-      renderTweets(data);
-    })
-  };
-
-loadTweets();
-
 });
