@@ -123,6 +123,7 @@ $("#tweetpost").on("submit", function(event) {
       loadNewTweets();
       $("textarea").val("");
       $(".val-error").slideUp(200);
+      $('.counter').text('140')
     }
   })
   console.log($(this).serialize());
