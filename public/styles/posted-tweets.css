@@ -12,6 +12,11 @@ article.tweet {
   margin: 1.5em;
   padding: 10px;
   border: 4px solid black;
+  word-wrap: break-word;
+}
+
+p {
+  word-break: break-all;
 }
 
 article:hover {
@@ -30,6 +35,7 @@ p.tweet {
   width: 90%;
   margin: 0px 10px;
   padding-left: 25px;
+  word-wrap: break-word;
 }
 
 article.tweet footer {
